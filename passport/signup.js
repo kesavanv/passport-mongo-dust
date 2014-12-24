@@ -1,6 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/user');
-var bCrypt = require('bcrypt-nodejs');
+var UserModel = require('../models/user');
 
 module.exports = function (passport) {
 
@@ -13,7 +12,7 @@ module.exports = function (passport) {
     );
 
     var findOrCreateUser = function (req, username, password, done) {
-        User.findOne({'username': username},
+        UserModel.User.findOne({'username': username},
             function (err, user) {
                 if (err) {
                     console.log('Error in signup ', err);
@@ -33,9 +32,9 @@ module.exports = function (passport) {
     };
 
     var createUser = function (req, username, password, done) {
-        var newUser = new User();
+        var newUser = new UserModel.User();
         console.log('newUser: ', newUser);
-        setUser(newUser, req, username, password, function (userData) {
+        UserModel.updateUser(newUser, req, username, password, function (userData) {
             userData.save(function (err) {
                 if (err) {
                     console.log('Error in Saving user', err);
@@ -46,19 +45,5 @@ module.exports = function (passport) {
                 return done(null, newUser);
             });
         });
-    };
-
-    var setUser = function (newUser, req, username, password, next) {
-        newUser.username = username;
-        newUser.password = createHash(password);
-        newUser.email = req.param('email');
-        newUser.firstName = req.param('firstName');
-        newUser.lastName = req.param('lastName');
-
-        next(newUser);
-    };
-
-    var createHash = function(password) {
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     };
 };
