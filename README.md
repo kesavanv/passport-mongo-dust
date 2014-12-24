@@ -5,3 +5,6 @@
 * run mongodb
 * The db name is passport (use passport)
 * npm start
+
+**credits**
+https://github.com/tutsplus/passport-mongo
