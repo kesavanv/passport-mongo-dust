@@ -1,0 +1,42 @@
+{>"layout" /}
+
+{<mainBlock}
+<div class="container">
+
+    <form class="form-signin" action="/login" method="POST">
+        <h2 class="form-signin-heading">Please Log in</h2>
+
+        {?message}
+            <div class="alert alert-danger" role="alert">{message}</div>
+        {/message}
+
+        {>"components/text-input"       
+            id="username"
+            label="Username"
+            placeholder="Username"
+            required="required"
+            autofocus="autofocus"
+        /}
+
+        {>"components/text-input"       
+            id="password"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            required="required"
+        /}
+
+        <!-- 
+        @ Improvement: feature to remember the user
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div> 
+        -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <p class="help-block"><a href="/signup"> Create an account</a></p>
+    </form>
+
+</div>
+{/mainBlock}

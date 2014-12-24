@@ -1,0 +1,20 @@
+<div class="form-group">
+    <label 
+        for="{?id}{id}{:else}{name}{/id}" 
+        class="sr-only{?labelClass} {labelClass}{/labelClass}">
+        {label}
+    </label>
+    <input 
+        id="{id}"
+        name="{?name}{name}{:else}{id}{/name}"
+        type="{?type}{type}{:else}text{/type}"
+        class="form-control {?optional}optional{:else}validate{/optional} {inputClassName}"
+        {?value} value="{value}" {/value}
+        {?required}required="required" aria-required="true"{/required}
+        {?autofocus}        autofocus=      "{autofocus}"       {/autofocus}
+        {?placeholder}      placeholder=    "{placeholder}"     {/placeholder}
+        placeholder="Username" 
+        required 
+        autofocus
+    />
+</div>

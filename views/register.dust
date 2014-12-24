@@ -1,0 +1,54 @@
+{>"layout" /}
+
+{<mainBlock}
+<div class="container">
+     <form class="form-signin" action="/signup" method="POST">
+        <h2 class="form-signin-heading">Registration</h2>
+
+        {?message}
+            <div class="alert alert-danger" role="alert">{message}</div>
+        {/message}
+
+        {>"components/text-input"       
+            id="username"
+            label="Username"
+            placeholder="Username"
+            required="required"
+            autofocus="autofocus"
+        /}
+
+        {>"components/text-input"       
+            id="password"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            required="required"
+        /}
+
+        {>"components/text-input"       
+            id="email"
+            type="email"
+            label="Email"
+            placeholder="Email"
+            required="required"
+        /}
+
+        {>"components/text-input"       
+            id="firstName"
+            label="First name"
+            placeholder="First name"
+            required="required"
+        /}
+
+        {>"components/text-input"       
+            id="lastName"
+            label="Last name"
+            placeholder="Last name"
+            required="required"
+        /}
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <p class="help-block"><a href="/"> Already have an account</a></p>
+    </form>
+</div>
+{/mainBlock}
